@@ -1,0 +1,693 @@
+/* =========================================
+   1. CSS Variables (Custom Properties)
+   ========================================= */
+:root {
+    /* Colors */
+    --bg-color: #050505;
+    /* Example dark background */
+    --text-main: #f8fafc;
+    /* Example light text */
+    --text-muted: #94a3b8;
+    /* Example muted text */
+    --primary-color: #89D1FF;
+    /* Example accent color */
+    /* Typography */
+    --font-family: 'Montserrat';
+    --font-size-base: 16px;
+    /* Spacing & Layout */
+    --container-width: 1200px;
+    --transition-speed: 0.3s;
+}
+
+/* =========================================
+   2. Modern CSS Reset
+   ========================================= */
+/* Box sizing rules: Makes padding and border included in the element's total width/height */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+
+}
+
+html {
+    scrollbar-width: none;
+}
+
+/* Remove default margin and padding from all elements */
+* {
+    cursor: none;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    /* Forces all elements to inherit fonts from the body */
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-main);
+    display: inline-block;
+}
+
+body {
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    /* Improves text readability */
+}
+
+nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 13rem;
+    width: 100%;
+    background-color: rgba(15, 18, 21, 0.95);
+    /* Dark solid background */
+    backdrop-filter: blur(10px);
+    z-index: 9999 !important;
+    /* Extremely high to stay above GSAP stacks */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+/* Hamburger Menu Base Styles */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: none;
+    gap: 5px;
+    z-index: 100;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-main);
+    transition: all var(--transition-speed) ease-in-out;
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+.logo span {
+    color: var(--primary-color);
+    font-weight: 300;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12rem 13rem 5rem 13rem;
+    /* Further increased top padding for absolute safety */
+    width: 100%;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    /* Forces content to stay aligned to the LEFT! */
+    text-align: left;
+}
+
+.main-hello {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.main-header {
+    line-height: 1;
+    font-weight: 700;
+    font-size: 7rem;
+}
+
+.main-sub-header {
+    line-height: 1;
+    font-weight: 700;
+    font-size: 7rem;
+}
+
+.main-header span,
+.main-sub-header span {
+    display: block;
+    /* For the 'SAID' word inside the span tag */
+    -webkit-text-stroke: 2px var(--primary-color);
+    color: transparent;
+}
+
+.main-text {
+    width: 90%;
+    color: var(--text-muted);
+}
+
+.main-button {
+    width: 30%;
+    min-height: 10px;
+    padding: 20px 40px;
+    background-color: var(--text-main);
+    color: var(--bg-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 40px;
+    cursor: none;
+}
+
+.main-button:hover {
+    background-color: var(--primary-color);
+}
+
+.main-image {
+    content: '';
+    position: relative;
+    width: 25em;
+    height: 35em;
+    border: 2px solid var(--text-muted);
+    border-radius: 30px;
+}
+
+.main-image img {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: grayscale(100%);
+    /* Default to gray on large screens */
+    transition: filter 0.5s ease;
+}
+
+.main-image:hover img {
+    filter: grayscale(0%);
+}
+
+
+#skills,
+#tech {
+    border-top: 1px solid var(--text-muted);
+    border-bottom: 1px solid var(--text-muted);
+    background: #000000;
+    width: 100%;
+}
+
+.skills-container,
+.techs-container {
+    position: reltive;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4.5rem 13rem;
+    width: 100%;
+    gap: 3rem;
+}
+
+.skill-item,
+.tech-item {
+    font-weight: 900;
+    font-size: 5rem;
+}
+
+.dot,
+.dot2 {
+    content: '';
+    width: 50px;
+    height: 30px;
+    font-weight: 900;
+    font-size: 100px;
+    color: transparent;
+    background-color: var(--primary-color);
+    border-radius: 100%;
+
+}
+
+#works {
+    padding: 1rem;
+    width: 100%;
+}
+
+#works h2 {
+    margin: 5rem;
+    font-weight: 900;
+    font-size: 10rem;
+    line-height: normal;
+}
+
+#works span {
+    display: block;
+    -webkit-text-stroke: 2px white;
+    color: transparent;
+}
+
+.works-container {
+    position: relative;
+    width: 100%;
+    padding: 3rem;
+}
+
+.work {
+    background-color: #0F1215;
+    position: sticky;
+    top: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    /* Ensure children fill the height */
+    width: 100%;
+    min-height: 40rem;
+    max-height: 80vh;
+    /* Use min-height so it can expand on mobile! */
+    height: auto;
+    margin: 0 auto 50vh auto;
+    border: 1px solid var(--text-muted);
+    border-radius: 30px;
+    overflow: hidden;
+    /* Prevent image overflow from rounded corners */
+}
+
+.work:last-child {
+    /* 
+       A high bottom margin acts as scrolling padding, so when you reach the bottom of the page, 
+       there's still enough virtual space to push the 6th card all the way up to 15vh! 
+    */
+    margin-bottom: 40vh;
+}
+
+.work-content {
+    padding: 3rem;
+    width: 50%;
+
+}
+
+.work h3 {
+    font-weight: 700;
+    font-size: 5rem;
+    color: var(--primary-color);
+}
+
+.work p {
+    color: var(--text-muted);
+
+}
+
+.work-button {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: none;
+    cursor: none;
+    margin-top: 50px;
+}
+
+.work-img {
+    width: 50%;
+    height: auto;
+    position: relative;
+    /* Fixed reference for absolute image */
+    overflow: hidden;
+}
+
+.work img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+#about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4.5rem 6rem;
+    width: 100%;
+    gap: 5rem;
+}
+
+.about-heading-text {
+    width: min(50%, 600px);
+    font-size: clamp(4rem, 8vw, 10rem);
+    /* Fluid sizing for desktop */
+    font-weight: 900;
+    line-height: 0.9;
+    /* margin-top: -15rem; Pushing it higher */
+    margin-bottom: 25rem;
+    /* Massive gap to allow for a longer travel distance */
+}
+
+.about-heading-text span {
+    display: block;
+    z-index: 100;
+    -webkit-text-stroke: 2px white;
+    color: transparent;
+    padding-bottom: 2rem;
+    /* Reduced massive padding for better flow */
+}
+
+.about-container {
+    width: 100%;
+}
+
+.about-text {
+    width: 100%;
+    font-size: 2rem;
+    color: var(--text-muted);
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 7rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: left;
+}
+
+.about-content h4 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.about-content p {
+    color: var(--text-muted);
+    width: 13em;
+}
+
+#contact {
+    margin-top: 10rem;
+}
+
+.phone {
+    font-size: clamp(3rem, 15vw, 15rem);
+    /* Responsive fluid font size for the massive mobile link */
+    font-weight: 900;
+    margin: auto;
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    word-break: break-word;
+}
+
+.phone:hover {
+    color: var(--primary-color);
+}
+
+/* =========================================
+   Mobile Responsiveness
+   ========================================= */
+@media screen and (max-width: 1416px) {
+    
+    nav {
+        background-color: var(--bg-color);
+    }
+
+    nav,
+    main {
+        padding: 2rem;
+        background-color: var(--bg-color);
+
+    }
+
+    /* Show hamburger menu */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Change nav layout for mobile devices */
+    ul {
+
+        position: fixed;
+        left: -100%;
+        top: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--bg-color);
+        width: 100%;
+        height: 100vh;
+        transition: left var(--transition-speed) ease-in-out;
+        z-index: -1000;
+    }
+
+    /* When class .active is added via JS, show the menu */
+    ul.active {
+        left: 0;
+    }
+
+    ul li {
+        margin: 2rem 0;
+    }
+
+    /* Hamburger animation */
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Fix main content direction */
+    main {
+        padding: 8rem 1.5rem 3rem 1.5rem;
+        /* Mobile clear for fixed nav */
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+        margin: auto;
+    }
+
+    .main-content {
+        align-items: center;
+        /* Center ONLY on mobile */
+        text-align: center;
+    }
+
+    main .main-text {
+        text-align: center;
+        margin: auto;
+        width: 70%
+    }
+
+    .main-header {
+        margin: auto;
+    }
+
+    main span {
+        margin: auto;
+    }
+
+    .main-button {
+        margin: auto;
+        width: 50%;
+
+    }
+
+    .hero {
+        margin-top: 10rem;
+        /* Increased spacing from the navbar */
+    }
+
+    .hero-photo {
+        margin: 2rem auto;
+        width: 15rem;
+        height: 20rem;
+    }
+
+    .hero-photo img {
+        filter: none !important;
+        /* Remove grayscale on mobile devices */
+    }
+
+    .main-image {
+        width: 18rem;
+        height: 25rem;
+    }
+
+    .main-image img {
+        display: block;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: none !important;
+        /* Forces color on mobile! */
+    }
+
+    #work {
+        width: 100%
+    }
+
+    #works h2 {
+        font-weight: 600;
+        /* keeping the boldness */
+        font-size: 3rem !important;
+        /* Not too small! */
+        /* margin: 2rem auto; */
+        text-align: left;
+    }
+
+    .works-container {
+        width: 100%;
+    }
+
+    .work {
+        position: relative;
+        margin: 3rem auto;
+        padding: 0;
+        width: 100%;
+        flex-direction: column;
+        /* Normal direction for mobile: image top, text bottom */
+        height: auto;
+        min-height: auto;
+        max-height: none !important;
+        border-radius: 20px;
+    }
+
+    .work-img {
+        width: 100% !important;
+        aspect-ratio: 16 / 9;
+        /* Consistent modern aspect ratio */
+        height: auto;
+    }
+
+    .work-content {
+        width: 100% !important;
+        padding: 1.5rem;
+        text-align: left;
+    }
+
+    .work h3 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .work p {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .work-button {
+        width: 100%;
+        margin-top: 1.5rem;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .work img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .nav {
+        padding: 1rem 1.5rem;
+    }
+
+    .nav h1 {
+        font-size: 1.2rem;
+    }
+
+    .nav ul {
+        display: none;
+        /* Hide desktop links on small mobile or consider a mobile menu toggle if needed later */
+    }
+
+    #about {
+        flex-direction: column;
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .about-heading-text {
+        font-size: clamp(3rem, 15vw, 6rem);
+        /* Responsive fluid sizing for mobile */
+        width: 100%;
+        font-weight: 900;
+        margin-bottom: 10rem !important;
+        align-self: flex-start;
+        text-align: center;
+    }
+
+    .about-heading-text span {
+        padding-bottom: 1rem;
+    }
+
+    #about * {
+        text-align: center;
+        margin: auto;
+        /* flex-direction: column; */
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .work {
+        margin: 2rem auto;
+    }
+
+    .work h3 {
+        font-size: 1.5rem;
+    }
+
+    .work-content {
+        padding: 1.2rem;
+    }
+}
+
+.cursor {
+    position: fixed;
+    background-color: var(--primary-color);
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+
+    pointer-events: none;
+    z-index: 10000;
+    transform: scale(1);
+
+
+}
+
+.cursor-follower {
+    position: fixed;
+    border: 1px solid var(--primary-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+
+    pointer-events: none;
+    z-index: 10000;
+    overflow: hidden;
+    transition: transform .6s;
+
+    &.active {
+        transform: scale(3);
+    }
+}
